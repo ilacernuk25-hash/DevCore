@@ -1,6 +1,7 @@
-// --- ОБРАБОТКА ФОРМЫ (без отправки, просто уведомление) ---
 
-alert("Скрипт загружен!");
+// --- ОБРАБОТКА ФОРМЫ (с выводом в консоль и алертом) ---
+
+document.addEventListener("DOMContentLoaded", function() {
 
 const orderForm = document.getElementById("orderForm");
 
@@ -18,31 +19,49 @@ const task = document.getElementById("userTask").value.trim();
 
 if (!name || !phone || !task) {
 
-alert("Заполните имя, телефон и описание задачи");
+alert("Заполните имя, телефон и задачу!");
 
 return;
 
 }
 
-// Просто выводим сообщение на экран
+// ---- ВЫВОДИМ В КОНСОЛЬ (ТЫ ЭТОГО ЖДАЛ) ----
 
-alert("Спасибо, " + name + "! Я свяжусь с вами в ближайшее время.");
+console.log("=== НОВАЯ ЗАЯВКА ===");
+
+console.log("Имя: " + name);
+
+console.log("Телефон: " + phone);
+
+console.log("Задача: " + task);
+
+// ---- ПОКАЗЫВАЕМ СООБЩЕНИЕ КЛИЕНТУ ----
+
+alert(`Спасибо, ${name}! Я свяжусь с вами по номеру ${phone}.`);
 
 // Очищаем форму
 
 orderForm.reset();
 
-// Показываем дополнительное сообщение на странице
+// Показываем сообщение на странице
 
 const msgDiv = document.getElementById("formMessage");
 
-msgDiv.textContent = "Заявка принята! Я скоро свяжусь с вами.";
+if (msgDiv) {
+
+msgDiv.textContent = "Заявка принята! Мы свяжемся с вами.";
 
 msgDiv.style.display = "block";
 
 setTimeout(() => msgDiv.style.display = "none", 3000);
 
+}
+
 });
+
+} else {
+
+console.error("Форма с id 'orderForm' не найдена!");
 
 }
 
@@ -82,7 +101,7 @@ function renderPortfolio() {
 
 const container = document.getElementById("portfolioItems");
 
-if (!container) return;
+if (container) {
 
 container.innerHTML = projects.map(p => `
 
@@ -98,14 +117,38 @@ container.innerHTML = projects.map(p => `
 
 `).join("");
 
+} else {
+
+console.error("Контейнер портфолио 'portfolioItems' не найден.");
+
+}
+
 }
 
 renderPortfolio();
 
-// Прокрутка к форме
+// --- ПРОКРУТКА К ФОРМЕ ---
 
-document.getElementById("orderBtn")?.addEventListener("click", () => {
+const orderBtn = document.getElementById("orderBtn");
 
-document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+if (orderBtn) {
+
+orderBtn.addEventListener("click", () => {
+
+const contactSection = document.getElementById("contact");
+
+if (contactSection) {
+
+contactSection.scrollIntoView({ behavior: "smooth" });
+
+} else {
+
+console.error("Секция 'contact' не найдена.");
+
+}
+
+});
+
+}
 
 });
