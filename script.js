@@ -1,6 +1,7 @@
 // --- ОБРАБОТКА ФОРМЫ (без отправки, просто уведомление) ---
 
 alert("Скрипт загружен!");
+
 const orderForm = document.getElementById("orderForm");
 
 if (orderForm) {
