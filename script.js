@@ -1,13 +1,11 @@
 
-// --- ОБРАБОТКА ФОРМЫ (с выводом в консоль и алертом) ---
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", function() {
+const form = document.getElementById("orderForm");
 
-const orderForm = document.getElementById("orderForm");
+if (form) {
 
-if (orderForm) {
-
-orderForm.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
 
 e.preventDefault();
 
@@ -17,87 +15,55 @@ const phone = document.getElementById("userPhone").value.trim();
 
 const task = document.getElementById("userTask").value.trim();
 
-if (!name || !phone || !task) {
+if (!name || !phone || !task) return alert("Заполните все поля!");
 
-alert("Заполните имя, телефон и задачу!");
+console.log(`=== ЗАЯВКА ===\nИмя: ${name}\nТелефон: ${phone}\nЗадача: ${task}`);
 
-return;
+alert(`Спасибо, ${name}! Я свяжусь с вами.`);
 
-}
+form.reset();
 
-// ---- ВЫВОДИМ В КОНСОЛЬ (ТЫ ЭТОГО ЖДАЛ) ----
+const msg = document.getElementById("formMessage");
 
-console.log("=== НОВАЯ ЗАЯВКА ===");
+if (msg) {
 
-console.log("Имя: " + name);
+msg.textContent = "Заявка принята!";
 
-console.log("Телефон: " + phone);
+msg.style.display = "block";
 
-console.log("Задача: " + task);
-
-// ---- ПОКАЗЫВАЕМ СООБЩЕНИЕ КЛИЕНТУ ----
-
-alert(`Спасибо, ${name}! Я свяжусь с вами по номеру ${phone}.`);
-
-// Очищаем форму
-
-orderForm.reset();
-
-// Показываем сообщение на странице
-
-const msgDiv = document.getElementById("formMessage");
-
-if (msgDiv) {
-
-msgDiv.textContent = "Заявка принята! Мы свяжемся с вами.";
-
-msgDiv.style.display = "block";
-
-setTimeout(() => msgDiv.style.display = "none", 3000);
+setTimeout(() => msg.style.display = "none", 3000);
 
 }
 
 });
 
-} else {
-
-console.error("Форма с id 'orderForm' не найдена!");
-
 }
 
-// --- ПОРТФОЛИО (13 карточек) ---
+// 10 карточек портфолио: 7 ESPOT + 3 Мурас
 
 const projects = [
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot1.jpg" },
+{ name: "Интернет-магазин ESPOT 1", img: "images/espot1.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot2.jpg" },
+{ name: "Интернет-магазин ESPOT 2", img: "images/espot2.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot3.jpg" },
+{ name: "Интернет-магазин ESPOT 3", img: "images/espot3.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot4.jpg" },
+{ name: "Интернет-магазин ESPOT 4", img: "images/espot4.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot5.jpg" },
+{ name: "Интернет-магазин ESPOT 5", img: "images/espot5.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot6.jpg" },
+{ name: "Интернет-магазин ESPOT 6", img: "images/espot6.jpg" },
 
-{ name: "Интернет-магазин ESPOT", image: "images/espot7.jpg" },
+{ name: "Интернет-магазин ESPOT 7", img: "images/espot7.jpg" },
 
-{ name: "Сайт стоматологии Мурас", image: "images/muras1.jpg" },
+{ name: "Сайт стоматологии Мурас 1", img: "images/muras1.jpg" },
 
-{ name: "Сайт стоматологии Мурас", image: "images/muras2.jpg" },
+{ name: "Сайт стоматологии Мурас 2", img: "images/muras2.jpg" },
 
-{ name: "Сайт стоматологии Мурас", image: "images/muras3.jpg" },
-
-{ name: "Сайт стоматологии Мурас", image: "images/muras4.jpg" },
-
-{ name: "Сайт стоматологии Мурас", image: "images/muras5.jpg" },
-
-{ name: "Сайт стоматологии Мурас", image: "images/muras6.jpg" }
+{ name: "Сайт стоматологии Мурас 3", img: "images/muras3.jpg" }
 
 ];
-
-function renderPortfolio() {
 
 const container = document.getElementById("portfolioItems");
 
@@ -107,7 +73,7 @@ container.innerHTML = projects.map(p => `
 
 <div class="portfolio-item">
 
-<img src="${p.image}" alt="${p.name}">
+<img src="${p.img}" alt="${p.name}">
 
 <h3>${p.name}</h3>
 
@@ -116,38 +82,6 @@ container.innerHTML = projects.map(p => `
 </div>
 
 `).join("");
-
-} else {
-
-console.error("Контейнер портфолио 'portfolioItems' не найден.");
-
-}
-
-}
-
-renderPortfolio();
-
-// --- ПРОКРУТКА К ФОРМЕ ---
-
-const orderBtn = document.getElementById("orderBtn");
-
-if (orderBtn) {
-
-orderBtn.addEventListener("click", () => {
-
-const contactSection = document.getElementById("contact");
-
-if (contactSection) {
-
-contactSection.scrollIntoView({ behavior: "smooth" });
-
-} else {
-
-console.error("Секция 'contact' не найдена.");
-
-}
-
-});
 
 }
 
