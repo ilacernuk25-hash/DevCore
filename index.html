@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCore — разработка сайтов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">DevCore</div>
+            <div class="tagline">Разработка сайтов под ключ</div>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Сайт, который приносит заказы</h1>
+                <p>Сделаю интернет-магазин, лендинг, портфолио. Быстро, дёшево, с душой.</p>
+                <a href="#contact" class="btn">Заказать сайт</a>
+            </div>
+        </section>
+
+
+        <section class="services">
+            <div class="container">
+                <h2>Что я могу</h2>
+                <div class="services-list">
+                    <div class="service-card">
+                        <h3>Сайт-каталог</h3>
+                        <p>До 50 товаров. Корзина, отправка заявок в Telegram / VK. Адаптация под телефон.</p>
+                        <div class="price">от 35 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h3>Интернет-магазин</h3>
+                        <p>Неограниченное количество товаров. Фильтры, корзина, форма заказа, онлайн-оплата (опционально).</p>
+                        <div class="price">от 70 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h3>Настройка ботов</h3>
+                        <p>Отправка заказов из форм в Telegram / ВК. Уведомления менеджерам.</p>
+                        <div class="price">от 10 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h3>Поддержка и доработка</h3>
+                        <p>Исправление ошибок, добавление новых функций, мелкие правки.</p>
+                        <div class="price">от 5 000 ₽/мес</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="portfolio">
+            <div class="container">
+                <h2>Мои работы</h2>
+                <div class="portfolio-items">
+                    <div class="portfolio-item">
+                        <img src="images/portfolio1.jpg" alt="Интернет-магазин техники">
+                        <h3>Интернет-магазин техники</h3>
+                        <p>56 товаров, корзина, отправка заказов в VK.</p>
+                        <a href="#" class="btn-small">Смотреть</a>
+                    </div>
+                    <!-- Добавишь сюда другие проекты, когда они появятся -->
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Давайте работать</h2>
+                <p>Оставьте заявку, и я свяжусь с вами</p>
+                <form id="orderForm">
+                    <input type="text" id="userName" placeholder="Ваше имя" required>
+                    <input type="tel" id="userPhone" placeholder="Телефон" required>
+                    <input type="text" id="userWhat" placeholder="Что нужно сделать? (каталог, магазин, бот...)" required>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+                <div id="formMessage" style="display:none;">Спасибо! Я свяжусь с вами в ближайшее время.</div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p>© 2026 DevCore. Разработка сайтов на заказ.</p>
+            <p>Новосибирск / по всей России</p>
+            <p>VK: <a href="https://vk.com/club238564524" target="_blank">Наша группа ВК</a></p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
